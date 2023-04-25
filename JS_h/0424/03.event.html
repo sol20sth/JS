@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      padding: 20px;
+      background-color: antiquewhite;
+    }
+
+    p {
+      padding: 20px;
+      background-color: aquamarine;
+      display: block;
+    }
+
+    span {
+      padding: 20px;
+      background-color: burlywood;
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    DIV
+    <p>
+      P
+      <span>
+        SPAN
+      </span>
+    </p>
+  </div>
+  <script>
+    // div
+    const d = document.querySelector("div")
+    d.addEventListener("click", function(e) {
+      console.log(e.target, "여기는 div 태그의 이벤트 함수")
+      // div 자식 중에 span 태그에서 발생한 이벤트만 따로 처리하고 싶을때
+      if (e.target.tagName === "SPAN") {
+        // 실행하고 싶은 코드 
+        console.log("span 태그 에서 발생한 이벤트")
+      }
+      if (e.target.tagName == "P") {
+        // p태그 일때 실행하고 싶은 코드
+        console.log("p 태그 에서 발생한 이벤트")
+      }
+    })
+    // p
+    // const p = document.querySelector("p")
+    // p.addEventListener("click", function(e) {
+    //   console.log(e.target, "여기는 p태그의 이벤트 함수")
+    // })
+    // // span
+    // const s = document.querySelector("span")
+    // s.addEventListener("click", function(e) {
+    //   console.log(e.target, "여기는 span 태그의 이벤트 함수")
+    //   // 상위 요소로 이벤트 전달 중단
+    //   e.stopPropagation()
+    //   // 상위 뿐만 아니라 이 이벤트 함수 말고 다른 이벤트 함수 xx
+    //   e.stopImmediatePropagation()
+    // })
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.black {
+				background-color: black;
+			}
+			.board {
+				font-size: 0;
+				display: inline-block;
+				border: 2px solid black;
+			}
+			.box {
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			// 1. 큰 div 하나 만들어서 body 에 붙인다
+			let board = document.createElement("div");
+			board.classList.add("board");
+			document.body.appendChild(board);
+
+			// 2. 줄 (div) 8개 만들어서 위에서 만든 큰 div 안에 붙인다
+			for (let i = 0; i < 8; i++) {
+				let row = document.createElement("div");
+				for (let j = 0; j < 8; j++) {
+					// 2-1. div 만들면서 그안에 또 div 8개 만들어서 붙인다(홀수 or 짝수)
+					let box = document.createElement("div");
+					box.classList.add("box");
+					if (i % 2 === 1 && j % 2 === 0) {
+						box.classList.add("black");
+					} else if (i % 2 === 0 && j % 2 === 1) {
+						box.classList.add("black");
+					}
+					row.appendChild(box);
+				}
+				board.appendChild(row);
+			}
+		</script>
+	</body>
+</html>

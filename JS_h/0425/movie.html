@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <script>
+    // https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1
+    const baseURL = `https://api.themoviedb.org/3/movie/`
+    const url = "popular/"
+    const API_KEY = "c0d5de278a381f46f6576b8f4528ebcd"
+    const params = {
+      api_key : API_KEY,
+      language: "ko-kr",
+      page: "1"
+    }
+    axios({
+      method: "get",
+      url,
+      baseURL,
+      params
+    }).then(res => {
+      console.log(res.data.results)
+    })
+  </script>
+</body>
+</html>
