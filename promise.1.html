@@ -1,0 +1,44 @@
+<script>
+    function job1(){
+            //파라미터 첫번째는 성공시, 실패시
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve('job1 ok!');
+            }, 2000);
+        }); // promise 설정시 콜백함수가 필요
+    }
+    function job2(){
+            //파라미터 첫번째는 성공시, 실패시
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                resolve('job2 ok!');
+            }, 2000);
+        }); // promise 설정시 콜백함수가 필요
+    }
+    job1().then(function(data){
+        console.log('data1', data);
+        job2().then(function(data) {
+            console.log('data2', data);
+        })
+    })
+    // job1()
+    //     .then(function(data){
+    //         console.log('data1', data);
+    //         return job2();
+    //     })
+    //     .then(function(data){
+    //         console.log('data2', data);
+    //     })
+    job1()
+        .then(function(data){
+            console.log('data1', data);
+            return job2();
+        })
+        .catch(function(reason){
+            console.log('reason', reason);
+            return Promise.reject(reason);
+        })
+        .then(function(data){
+            console.log('data2', data);
+        })
+</script>

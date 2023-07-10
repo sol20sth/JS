@@ -1,0 +1,45 @@
+<script>
+    function timer(time) {
+        return new Promise(function(resolve){
+            setTimeout(function(){
+                resolve(time);
+            }, time);
+        });
+    }
+    // 방법 1
+    timer(1000)
+        .then(function(time) {
+            console.log('time:' + time);
+            timer(time+1000);
+            return timer(time+1000);
+        })
+        .then(function(time) {
+            console.log('time:' + time);
+            timer(time+1000);
+            return timer(time+1000);
+        })
+        .then(function(time) {
+            console.log('time:' + time);
+            console.log('end')
+        })
+        // 방법 2
+        async function run() {
+            console.log('start');
+            let time = await timer(1000);
+            console.log('time:' + time);
+            time = await timer(time+1000);
+            console.log('time:' + time);
+            time = await timer(time+1000);
+            console.log('time:'+ time);
+            console.log('end');
+        }
+        console.log('parent start');
+        run();
+        console.log('parent end');
+        async function run2() {
+            console.log('parent start');
+            await run();
+            console.log('parent end');
+        }
+        run2();
+</script>
